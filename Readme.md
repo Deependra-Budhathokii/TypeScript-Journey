@@ -128,12 +128,73 @@ tsc --noEmitOnError index.ts
 <br>
 
 
+### BooLean and BIGINT TYPE
+Boolean has value either true or false. It is a one of the primitive data type(i.e has no properties and methods)
+
+let isMyNameDeep:boolean = true;
+let hasStarted:boolean = false;
+
+```
+// Prog: `true if a num is divisible by both 4 and 8`
+
+const isEven = (a:number):boolean=>{
+   return a%8 === 0
+}
+ console.log(isEven(8));
+```
+
+### BigInt Type  : 
+*skipping for now as this is used for dealing with very huge number*
 
 
+### Any vs Unknown Types
+`Any type` is the most flexible type in TypeScript.  Its like turning off all type checking for the vairables or expressions it is applied to
+
+```
+let myfavColor:any = "Blue"
+myfavColor = 2
+
+console.log(myfavColor)
+
+// no errors at all, but in ts, if not mentioned `any` in such case, shows error
+```
+
+<span style="color:green; font-size:1.2rem; font-weight:bold">usecases</span>
+ - *Working with Dynamic data*
+ - *migration from javascript: when migrating an existing js codebase to typescript*
+
+### unknown Type
+The `unknown` type is a safer alternative to `any` becoz it still  enforces `type checking` and `type safety`.
+
+```
+let num = 10;
+num = true  // here ts performs typeChecking
+
+num.map()   // here ts performs/enforces type safety like whenther we can apply methods or properties like map,reduce, fileter, foreach etc in this num or not, This is called type safety 
+
+As we know, we use map on array not on number, thus type safety detect such a error
+
+```
+
+```
+asyn function fetchData(): Promise<unknown>{
+    const response = await fetch("https://api.example.com/data")
+    const data = await response.json();
+    return data;
+}
+
+async function processData() {
+    const response = await fetchData();
+
+    if (typeof repsonse === 'object'){
+        
+        // perform operations on the response object
+    }
+}
+```
 
 
-
-## Learn Typeacript Generics
+## Learn Typecript Generics
 
 
 

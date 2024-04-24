@@ -1,6 +1,14 @@
 "use strict";
-let text = "I am having fun learning typescript";
-let uppercaseText = text.toUpperCase();
-console.log(uppercaseText);
-let lowerCaseText = text.toLowerCase();
-console.log(lowerCaseText);
+let num;
+num = 5;
+num = "Deep";
+num = true;
+if (typeof num === "number") {
+    console.log(num + 5);
+}
+else if (typeof num === "boolean") {
+    console.log(num);
+}
+console.log(typeof (10));
+console.log(typeof ("deep"));
+console.log(typeof (true));

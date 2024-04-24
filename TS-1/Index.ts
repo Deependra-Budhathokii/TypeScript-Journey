@@ -1,8 +1,14 @@
+asyn function fetchData(): Promise<unknown>{
+    const response = await fetch("https://api.example.com/data")
+    const data = await response.json();
+    return data;
+}
 
-let text:string = "I am having fun learning typescript"
+async function processData() {
+    const response = await fetchData();
 
-let uppercaseText:string = text.toUpperCase()
-console.log(uppercaseText)
-
-let lowerCaseText:string = text.toLowerCase()
-console.log(lowerCaseText)
+    if (typeof response === 'object'){
+        
+        // perform operations on the response object
+    }
+}
