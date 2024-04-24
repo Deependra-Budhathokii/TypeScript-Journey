@@ -1,16 +1,68 @@
-const numbers: number[] = [2,3,4,5,6,7,8]
 
-// Doubling each numbers
-const doubleData: number[] = numbers.map((curVal:number)=>curVal*2)
-console.log(doubleData)
 
-// Converting  to string
+type Person = {
+    name:string;
+    age: number;
+    isStudent: boolean;
+    class?: string;  // optional parameter/properties
+    address: {city:string; country: string}
 
-const numberToString:string[] = numbers.map((curVal:number)=>curVal.toString()) 
-console.log(numberToString)
+}
 
-//Filtering the Even numbers
-const filterEvenNum:number[] = numbers.filter((curElem:number)=>curElem%2===0)
-const filterOutEvenNum:number[] = numbers.filter((curElem:number)=>curElem%2!==0)
-console.log(filterEvenNum)
-console.log(filterOutEvenNum)
+
+const person: Person = {
+    name: "Deepak",
+    age: 22,
+    isStudent:true,
+    address: {
+        city: "Kathmandu",
+        country: "Nepal"
+    }
+}
+
+console.log(person.isStudent)
+console.log(person.address.country) // accessing nested objects
+
+
+
+// Task:
+//? Define an interface or type representing a product with properties for name, price, and quantity. Create a product object with the following data:
+// Name: "Laptop"
+// Price : 1000
+// Quantity : 5
+
+// ? Calculate Total Price: write a func called calculateTotalPrice that calculates and return total price of the product based on quantity
+
+
+
+type Prod = {
+    name: string;
+    price: number;
+    Quantity: number
+}
+
+
+const product: Prod = {
+    name: "Laptop",
+    price: 1000,
+    Quantity: 5 
+}
+
+
+// const calculateTotalPrice = (price:number, quantity:number):number =>{
+//    const totalPrice = price * quantity
+//    return totalPrice
+// }
+
+// console.log(calculateTotalPrice(product.price, product.Quantity)) 
+
+
+const calculateTotalPrice = (product:Prod):number =>{
+   const totalPrice = product.price * product.Quantity
+   return totalPrice
+}
+
+console.log(calculateTotalPrice(product)) 
+
+
+//  We can see benefits like auto suggestion also here

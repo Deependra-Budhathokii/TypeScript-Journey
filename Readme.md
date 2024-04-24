@@ -194,13 +194,13 @@ async function processData() {
 ```
 
 
-### <span style="color:yellow;">Typescript function</span>: Understanding Invocation, Declaration, and Return type 
+### <span style="color:#F5806D;">Typescript function</span>: Understanding Invocation, Declaration, and Return type 
 
-### <span style = "color:yellow;">Function Invocation</span>
+### <span style = "color:#F5806D;">Function Invocation</span>
 Funciton invocation simply means function calling
 
  
-### <span style="color:yellow;">Type Inference in TS</span>
+### <span style="color:#F5806D;">Type Inference in TS</span>
 Type Inference in TS refers to ability of the typescript compiler to automatically determine and assign types to variables, expressions, and functions return values based on their usage and context in the code.
 
 `inference` means `to infer` i.e means `to assume`, thus, it implicilty refer `type`  which is somehow oppsite to `type annotations` where we explcitly provides types
@@ -214,7 +214,7 @@ const myName = 'Deependra';
 ```
 
 
-### <span style="color:yellow;">Optional and Default Parameter in TS</span>
+### <span style="color:#F5806D;">Optional and Default Parameter in TS</span>
 - Typescript allows you to define optional and default parameters in function. 
 - optional parameters are denoted by appending `? symbol` after the parameter name
 - and default parameters are specified by providing a default value in the paramter declaration.
@@ -241,7 +241,7 @@ console.log(emp)
 <br>
 
 
-## <span style="color:yellow;">Array In TypeScript</span>
+## <span style="color:#F5806D;">Array In TypeScript</span>
 In typescript, you can create and initailize arrays using various approaches
 
 *Using Square Brackets:*
@@ -263,7 +263,7 @@ const fruits: string[] = ["apple", "banana", "orange", "mango"];
 fruits.forEach((curVal:string)=>console.log(curVal))
 ```
 
-### <span style="color:yellow;">Map, reduce and Filter method in Array in TS</span>
+### <span style="color:#F5806D;">Map, reduce and Filter method in Array in TS</span>
 ```
 const numbers: number[] = [2,3,4,5,6,7,8]
 
@@ -284,6 +284,65 @@ const filterOutEvenNum:number[] = numbers.filter((curElem:number)=>curElem%2!==0
 console.log(filterEvenNum)
 console.log(filterOutEvenNum)
 ```
+
+## <span style="color:#F5806D;">Objacts in TypeScript</span>
+
+To define type:  write colon and curly braces after the object name and define type like a schema.   
+*Note: use  semicolon(;) in defining type instead of comma in like in obj* 
+
+```
+const person:{
+    name:string;
+    age: number;
+    isStudent: boolean;
+    address: {city:string; Country: string}
+} = {
+    name: "Deepak",
+    age: 22,
+    isStudent:true,
+    address: {
+        city: "Kathmandu",
+        Country: "Nepal"
+    }
+}
+
+console.log(person.name)
+console.log(person.isStudent)
+console.log(person.address.city) // accessing nested objects
+```
+<span style="color:pink;">Note: But in above code, when we create multiple object and define type schema for each, our source code will be long for this, lets see `type ALias in ts`</span>
+
+## <span style="color:yellow;">Type Alias in TS(Typescript)</span>
+In Typescript, a type alias is a way to give a name to a specific type or combination of types. It allows you to create a custom name for a type, making it easier to reuse and refer to the same type in different parts of your code. Type aliases provides better `readability`, `organizations`, and `abstraction` of complex types.
+
+*To define a type alias, you use the type keyword followed by the alias name and the type definition*
+
+syntax :  `similar to object creating`
+  type Person = {
+    
+}
+
+Note : 
+- alias name i.e here `Person`, first letter must be`capital`
+
+```
+const Person = {
+    name : string;
+    age: number;
+    isStudent: boolean;
+    address: {city:string; country:string}
+}
+
+const person:Person = {
+    name : "Deepak",
+    age : 22,
+    isStudent: true,
+    address : {city: "Kathmandu", country: "Nepal"}
+}
+
+```
+
+
 
 
 
