@@ -1,27 +1,12 @@
 "use strict";
-const person = {
-    name: "Deepak",
+const student1 = {
+    name: "Hari",
     age: 22,
-    isStudent: true,
-    address: {
-        city: "Kathmandu",
-        country: "Nepal"
-    }
+    greet: (country) => `HI my name is ${student1.name}, and i am ${student1.age} years old , I live in ${country}`
 };
-console.log(person.isStudent);
-console.log(person.address.country); // accessing nested objects
-const product = {
-    name: "Laptop",
-    price: 1000,
-    Quantity: 5
+console.log(student1.greet("Nepal"));
+const introduction = (student1) => {
+    const { name, age } = student1;
+    return `HI my name is ${name}, and i am ${age} years old `;
 };
-// const calculateTotalPrice = (price:number, quantity:number):number =>{
-//    const totalPrice = price * quantity
-//    return totalPrice
-// }
-// console.log(calculateTotalPrice(product.price, product.Quantity)) 
-const calculateTotalPrice = () => {
-    const totalPrice = product.price * product.Quantity;
-    return totalPrice;
-};
-console.log(calculateTotalPrice());
+console.log(introduction(student1));

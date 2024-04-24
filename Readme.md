@@ -343,7 +343,24 @@ const person:Person = {
 ```
 
 
+## <span style="color:yellow;">Introduction to Call Signatures</span>
+The `function call signature` refers to the declaration or definition of a function, which includes the function's name, parameters, and return type. It defines the structure and type information of a function without including the function's implementation or body 
 
+<span style="color:red; font-size:1.2rem"> `Note:` very imp: call signatures are typically used `inside object type notations` to describe the shape of functions within object types.
+
+`*Void*`    
+In TypeScript, Void is a data type that represents the `absence of any value`. It is often used as the return type of functions that do not return a value.
+
+This is similar to using undefined as a return type in JavaScript, but void is more explicit in indicating that the function intentionally does not return anything.
+
+```
+type Student = {
+    name:string;
+    age: number;
+    gender?:string
+    greet: (country:string) => string   //method call signature where func strcuture and type annotation is defined , not the actual working of function 
+}
+```
 
 
 ## Learn Typecript Generics

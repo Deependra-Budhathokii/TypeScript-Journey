@@ -1,68 +1,36 @@
-
-
-type Person = {
+type Student = {
     name:string;
     age: number;
-    isStudent: boolean;
-    class?: string;  // optional parameter/properties
-    address: {city:string; country: string}
-
+    gender?:string
+    greet: (country:string) => string;   //method call signature where func strcuture and type annotation is defined , not the actual working of function
+    
+    // Alterntaive
+// (country:string): string    
 }
 
 
-const person: Person = {
-    name: "Deepak",
-    age: 22,
-    isStudent:true,
-    address: {
-        city: "Kathmandu",
-        country: "Nepal"
-    }
+const student1:Student = {
+    name: "Hari",
+    age:22 ,
+    greet: (country)=>`HI my name is ${student1.name}, and i am ${student1.age} years old , I live in ${country}`
+
 }
 
-console.log(person.isStudent)
-console.log(person.address.country) // accessing nested objects
-
-
-
-// Task:
-//? Define an interface or type representing a product with properties for name, price, and quantity. Create a product object with the following data:
-// Name: "Laptop"
-// Price : 1000
-// Quantity : 5
-
-// ? Calculate Total Price: write a func called calculateTotalPrice that calculates and return total price of the product based on quantity
-
-
-
-type Prod = {
-    name: string;
-    price: number;
-    Quantity: number
+const student2:Student = {
+    name: "Ramesh",
+    age:21 ,
+    greet: (country)=>`HI my name is ${student1.name}, and i am ${student1.age} years old , I live in ${country}`
 }
 
-
-const product: Prod = {
-    name: "Laptop",
-    price: 1000,
-    Quantity: 5 
-}
+console.log(student1.greet("Nepal"))
+console.log(student2.greet("India"))
 
 
-// const calculateTotalPrice = (price:number, quantity:number):number =>{
-//    const totalPrice = price * quantity
-//    return totalPrice
-// }
-
-// console.log(calculateTotalPrice(product.price, product.Quantity)) 
 
 
-const calculateTotalPrice = (product:Prod):number =>{
-   const totalPrice = product.price * product.Quantity
-   return totalPrice
-}
+// const introduction = (student1:Student):string =>{
+//     const{name,age} = student1;
+//     return `HI my name is ${name}, and i am ${age} years old `
+// } 
 
-console.log(calculateTotalPrice(product)) 
-
-
-//  We can see benefits like auto suggestion also here
+// console.log(introduction(student1))
