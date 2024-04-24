@@ -1,14 +1,16 @@
-asyn function fetchData(): Promise<unknown>{
-    const response = await fetch("https://api.example.com/data")
-    const data = await response.json();
-    return data;
-}
+const numbers: number[] = [2,3,4,5,6,7,8]
 
-async function processData() {
-    const response = await fetchData();
+// Doubling each numbers
+const doubleData: number[] = numbers.map((curVal:number)=>curVal*2)
+console.log(doubleData)
 
-    if (typeof response === 'object'){
-        
-        // perform operations on the response object
-    }
-}
+// Converting  to string
+
+const numberToString:string[] = numbers.map((curVal:number)=>curVal.toString()) 
+console.log(numberToString)
+
+//Filtering the Even numbers
+const filterEvenNum:number[] = numbers.filter((curElem:number)=>curElem%2===0)
+const filterOutEvenNum:number[] = numbers.filter((curElem:number)=>curElem%2!==0)
+console.log(filterEvenNum)
+console.log(filterOutEvenNum)

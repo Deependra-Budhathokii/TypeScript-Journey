@@ -187,11 +187,104 @@ async function processData() {
     const response = await fetchData();
 
     if (typeof repsonse === 'object'){
-        
+
         // perform operations on the response object
     }
 }
 ```
+
+
+### <span style="color:yellow;">Typescript function</span>: Understanding Invocation, Declaration, and Return type 
+
+### <span style = "color:yellow;">Function Invocation</span>
+Funciton invocation simply means function calling
+
+ 
+### <span style="color:yellow;">Type Inference in TS</span>
+Type Inference in TS refers to ability of the typescript compiler to automatically determine and assign types to variables, expressions, and functions return values based on their usage and context in the code.
+
+`inference` means `to infer` i.e means `to assume`, thus, it implicilty refer `type`  which is somehow oppsite to `type annotations` where we explcitly provides types
+
+- use type inference for simple cases 
+- when in doubt, provide explicit type annotations to make intensions clear.
+- Avoid relying heavily on type inference
+
+```
+const myName = 'Deependra';
+```
+
+
+### <span style="color:yellow;">Optional and Default Parameter in TS</span>
+- Typescript allows you to define optional and default parameters in function. 
+- optional parameters are denoted by appending `? symbol` after the parameter name
+- and default parameters are specified by providing a default value in the paramter declaration.
+
+
+```
+const invite = (name:string, id?:number):string =>{
+
+    if (id){
+    return `Welcome ${name} and your id is ${id}`
+    } else {
+        return `Wecome ${name}`
+    }
+}
+
+const emp = invite("Ryan")
+console.log(emp)
+
+//Here, if we provide single arg, it didn't shows err as we mentioned id as optional using `? symbol`
+```
+<span style="color:green;">Highlights: ? symbol </span>
+- id?:number
+
+<br>
+
+
+## <span style="color:yellow;">Array In TypeScript</span>
+In typescript, you can create and initailize arrays using various approaches
+
+*Using Square Brackets:*
+- const num: number[] = [1,2,3,4,5,6]
+
+*Using Array constructor:*
+- const numm: number[] = new Array(1,2,3,4,5,6)
+
+*Using the Array .of method:*
+- const names: string[] = Array.of("Deependra", "Budhathoki", "CSIT")
+
+
+### Array Operations and Iterations
+*Array in Typescript come with built-in methods that allow you to perform common operations*
+
+`Iterating over elements`
+```
+const fruits: string[] = ["apple", "banana", "orange", "mango"];
+fruits.forEach((curVal:string)=>console.log(curVal))
+```
+
+### <span style="color:yellow;">Map, reduce and Filter method in Array in TS</span>
+```
+const numbers: number[] = [2,3,4,5,6,7,8]
+
+// Doubling each numbers
+
+const doubleData: number[] = numbers.map((curVal:number)=>curVal*2)
+console.log(doubleData)
+
+// Converting  to string
+
+const numberToString:string[] = numbers.map((curVal:number)=>curVal.toString()) 
+console.log(numberToString)
+
+//Filtering the Even numbers and Filter out
+
+const filterEvenNum:number[] = numbers.filter((curElem:number)=>curElem%2===0)
+const filterOutEvenNum:number[] = numbers.filter((curElem:number)=>curElem%2!==0)
+console.log(filterEvenNum)
+console.log(filterOutEvenNum)
+```
+
 
 
 ## Learn Typecript Generics
