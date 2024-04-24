@@ -357,11 +357,61 @@ This is similar to using undefined as a return type in JavaScript, but void is m
 type Student = {
     name:string;
     age: number;
-    gender?:string
+    gender?:string;
     greet: (country:string) => string   //method call signature where func strcuture and type annotation is defined , not the actual working of function 
+
+
+    const student2:Student = {
+    name: "Ramesh",
+    age:21 ,
+    greet: (country:string)=>`HI my name is ${student1.name}, and i am ${student1.age} years old , I live in ${country}`
+}
+
+console.log(student1.greet("Nepal"))
 }
 ```
 
+
+## <span style="color:yellow;">Enums in TypeScript</span>
+ENums in TS are commonly used when you want to represent 
+- if one properties has a `multiple value`, then we use `Enums`
+- in TS, when constants are not explicitly assigned numeric valuas, Then they are assigned incremental numeric valuas starting from 0. The default numeric values for the first enum constant is 0, and subsequent enum contants receive values incremented by 1
+
+user1 = login => normal user
+user2 = login => admin user
+
+
+```
+enum Roles {
+    user = "user", 
+    admin = "admin"
+}
+
+
+type LoginDetails = {
+    name? : string;
+    email : string;
+    password : string;
+    role : Roles
+
+}
+
+
+const user1: LoginDetails = {
+    name: "Ryan Shrestha",
+    email: "rayan@gmail.com",
+    password: "dhas",
+    role: Roles.admin
+
+}
+
+const user2: LoginDetails = {
+    email : "hari@gmail.com",
+    password: "ajds",
+    role: Roles.admin
+
+}
+```
 
 ## Learn Typecript Generics
 

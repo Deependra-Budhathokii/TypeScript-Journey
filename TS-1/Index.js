@@ -1,12 +1,24 @@
 "use strict";
-const student1 = {
-    name: "Hari",
-    age: 22,
-    greet: (country) => `HI my name is ${student1.name}, and i am ${student1.age} years old , I live in ${country}`
+var Roles;
+(function (Roles) {
+    Roles["user"] = "user";
+    Roles["admin"] = "admin";
+})(Roles || (Roles = {}));
+const user1 = {
+    name: "Ryan Shrestha",
+    email: "rayan@gmail.com",
+    password: "dhas",
+    role: Roles.user
 };
-console.log(student1.greet("Nepal"));
-const introduction = (student1) => {
-    const { name, age } = student1;
-    return `HI my name is ${name}, and i am ${age} years old `;
+const user2 = {
+    email: "hari@gmail.com",
+    password: "ajds",
+    role: Roles.admin
 };
-console.log(introduction(student1));
+// console.log(user1.email)
+// console.log(user2.role)
+const isAdmin = (user1) => {
+    const { email, password, name, role } = user1;
+    return role === "admin" ? `${name} with a email id ${email} is a admin and is allowed to edit a webiste` : `${name} is not a admin so is not allowed to edit website`;
+};
+console.log(isAdmin(user1));

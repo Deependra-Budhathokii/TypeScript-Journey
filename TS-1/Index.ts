@@ -1,36 +1,46 @@
-type Student = {
-    name:string;
-    age: number;
-    gender?:string
-    greet: (country:string) => string;   //method call signature where func strcuture and type annotation is defined , not the actual working of function
+
+
+enum Roles {
+    user = "user", 
+    admin = "admin"
+}
+
+
+type LoginDetails = {
+    name? : string;
+    email : string;
+    password : string;
+    role : Roles
+}
+
+
+const user1: LoginDetails = {
+    name: "Ryan Shrestha",
+    email: "rayan@gmail.com",
+    password: "dhas",
+    role: Roles.user
+
+}
+
+const user2: LoginDetails = {
+    email : "hari@gmail.com",
+    password: "ajds",
+    role: Roles.admin
+
+}
+
+
+
+
+// console.log(user1.email)
+// console.log(user2.role)
+
+const isAdmin = (user1:LoginDetails):string =>{
+    const{email,password,name,role} = user1
+
+    return role === "admin" ?`${name} with a email id ${email} is a admin and is allowed to edit a webiste` :`${name} is not a admin so is not allowed to edit website`
     
-    // Alterntaive
-// (country:string): string    
-}
+} 
 
 
-const student1:Student = {
-    name: "Hari",
-    age:22 ,
-    greet: (country)=>`HI my name is ${student1.name}, and i am ${student1.age} years old , I live in ${country}`
-
-}
-
-const student2:Student = {
-    name: "Ramesh",
-    age:21 ,
-    greet: (country)=>`HI my name is ${student1.name}, and i am ${student1.age} years old , I live in ${country}`
-}
-
-console.log(student1.greet("Nepal"))
-console.log(student2.greet("India"))
-
-
-
-
-// const introduction = (student1:Student):string =>{
-//     const{name,age} = student1;
-//     return `HI my name is ${name}, and i am ${age} years old `
-// } 
-
-// console.log(introduction(student1))
+console.log(isAdmin(user1))
