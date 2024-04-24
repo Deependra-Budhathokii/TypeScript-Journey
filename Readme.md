@@ -101,15 +101,16 @@ let myCar: Car;
 
 
 # Basis
+```
+ts File
 
-<script>
 // @ts-ignore
 function sum(a: number,b: number):number{
     return a+b
 }
-
  console.log(sum(10,10))
-</script>
+
+```
 
 
 #### TS configuration File
