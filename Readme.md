@@ -118,6 +118,7 @@ we can modify our compiler with this file, for e.g our tsc compiles our ts file 
 
 ```
 tsc init     // initialized ts config file
+tsc --init     // initialized ts config file
 
 tsc --noEmitOnError index.ts 
 ```
@@ -442,8 +443,175 @@ const displayPersonInfo = (person:PersonInfo) =>{
 displayPersonInfo(person1)
 displayPersonInfo(person2)
 ```
+## <span style="color:yellow;">Unions and Intersection in Typescript</span>
+*union and intersection is just like how we study in school*
+*You can use |(pipe) symbol to define a union type*
+*You can use &(ampersand) symbol to define a intersection type*
 
-## Learn Typecript Generics
+### Union
+An user can provides any type of inputs like string, number, boolean, lets say in a contact form
+
+```
+const inputValue = (value: string|number|boolean ) =>{
+
+}
+
+<!-- func calling -->
+inputValue(55)
+inputValue("hello")
+inputValue(true)
+```
 
 
+### Intersection
+allows you to combine multiple types into a single type
+- Note: in Ts intersection logic works in a way that both the set A and Set B data should be there 
+
+
+```
+type Person = {
+    name: string,
+    age: number
+}
+
+type Employee = {
+    emp_id: number,
+    department: string
+}
+
+
+//type EmployeeDetails = Person | Employee   // union
+type EmployeeDetails = Person & Employee   // Intersection
+
+
+....rest of the code
+
+```
+
+
+## <span style="color:yellow;">Learn Typescript Generics</span>
+*Note : It is imp as its main concepts is `reusable components` like in react.*
+
+Generics in Typescript allow you to create reusable components or give power  to functions `that can work with multiple data types.`
+
+-  `Give power  to functions that can work with multiple data types.`
+- use of anckle i.e <> brackets, which is a syntax of generics
+- inside generic syntax, we pass `data type placeholder`
+- can be written either `<T> or <Type>` or any
+
+```
+function returnAndLog<T>(value:T):T{
+    return value
+}
+const numResult =  <number>returnAndLog(10);
+const strResult = <string>returnAndLog("Hello, Learning Genetics");
+```
+<br>
+
+## <span style="color:#2EEA91;">VS code INLAY HINTS</span>
+In vs code,
+-  ctrl , to open vs code setting 
+- search : typescript inlay hints
+- then apply tick on wherever you need
+- more details, search in google : vscode Typescript inlay hints 
+- then copy paste setting
+
+You can also use this for js 
+
+
+## <span style="color:yellow;">Matering Multiple Variable Type</span>
+
+```
+// solving Function Overloading with TS Generics: Multiple Type Variables
+
+function add<T,U>(a:T,b:U) {
+    console.log(typeof a)
+    console.log(typeof b)
+}
+
+const result1 = add<number,string>(5,"Deep");
+const result2 = add("Hello", 5)
+```
+
+## <span style="color:yellow;">Interfaces in Typescript</span>
+In Typescript, an interface is a powerful feature that allows you to define a contract for an object shape.
+- it specifies the properties and their types than an object must have to be considered of that particular interface type.
+- Interfaces are primarily used for type checking during development and do not generate any js code at runtime
+
+In `js` , there is a only `object` but in `TS` there is `object types`
+
+
+<span style="color:red;  font-size:1.3rem">Note</span> : `Type alias and Interface are same,In fact, they are alternative of each other`
+
+- Interfaces are mostly used in Classes and Object
+- type alias is mostly used in functional components
+- todays we, mostly see `interface`
+- In between them, there is `=` syntax diff, In Interface,there is `no =` and in `type alias` has `=`
+
+
+
+
+```
+
+// Creating greet objects using Interface
+
+interface Greet  {
+        name: string;
+        age: number
+}
+
+const greet:Greet = {
+    name: "Bob",
+    age: 10
+}
+
+console.log(greet.age)
+```
+
+
+## <span style="color:yellow;">Typescript Compiler and Project Configuration</span>
+
+- To automate our compiler and run of js file seperattively, we need to configure
+
+- We have `Watch Mode Property`
+
+In terminal, we have cmd
+```
+tsc index.ts  --watch
+
+// But it has a problem, it will update only one ts file, and not work for multiple file
+```
+
+- To work on a multiple file, we need to config `tsconfig.json`
+
+```
+tsc --init
+tsc -w    
+
+//  w refers watch, if use ful watch then double hyphen  tsc --watch
+```
+
+- suppose in your root folder you want your `ts files` on dir src and its respective `js file` on dir `dist` . For this, we see properties `ROOTDIR and OUTDIR` 
+ 
+  - In config file, search `rootDir` 
+     -  modify to   "rootDir": "./src",  
+
+  - In config file, search `outDir` 
+     -  modify to   "outDir": "./dist", 
+
+
+
+- `If you  to config js version to latest`
+  -  We have by default :` "target": "es2016",`
+    -we can modify to `"target": "ES2022",`
+
+
+- We can specifiy library i.e  `"lib": []`, like DOM, react etc
+  - `"lib": ["ES2022", "DOM"]`
+
+
+- Suppose if we use node packages, and we not want the `node modules` , Here we can exclude that: For this
+    - In config file, At the end , we can create `"exclude":[node]` 
+    - Or you can include also like `"exclude":[]` 
+    - 
 
