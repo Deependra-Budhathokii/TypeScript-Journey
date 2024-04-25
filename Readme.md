@@ -413,6 +413,36 @@ const user2: LoginDetails = {
 }
 ```
 
+## <span style="color:yellow;">Tuples in TypeScript: Matering Data Structures</span>
+*Lets know, it is better than array or not*
+
+In Typescript, tuples are  a data structure that allows you to store a fixed-size collection of element of different types. They are similar to arrays, but with a key difference: the types of elements in a tuple are fixed and declared at the time of creation, whereas arrays can hold elements of the same type and their size can vary.
+
+`*used where , Number of Elements are Fixed already*`
+```
+
+
+// Defining a tuple for person information(with name, age and driving licence )
+type PersonInfo = readonly [string, number, boolean, boolean?]
+
+
+// Example usage
+const person1:PersonInfo = ["Jade", 20, true] 
+const person2:PersonInfo = ["David", 22, false]
+// const person2:PersonInfo = [22,"David", false]  // Tuple ensure order 
+
+
+const displayPersonInfo = (person:PersonInfo) =>{
+    const[name, age, hasDriverLicence] = person
+
+    console.log(`Name: ${name}, Age: ${age}, Driver's License Status: ${hasDriverLicence ? "yes" : "No"}`)
+}
+
+
+displayPersonInfo(person1)
+displayPersonInfo(person2)
+```
+
 ## Learn Typecript Generics
 
 
