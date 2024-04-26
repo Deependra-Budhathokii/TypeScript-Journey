@@ -613,5 +613,106 @@ tsc -w
 - Suppose if we use node packages, and we not want the `node modules` , Here we can exclude that: For this
     - In config file, At the end , we can create `"exclude":[node]` 
     - Or you can include also like `"exclude":[]` 
-    - 
+    
+- Also imp is to `uncomment` the noEmitOnError
+   -     "noEmitOnError": true,   
 
+<br>
+<hr>
+
+
+
+# <span style="color:#32F7A6;">Object Oriented Programming (OOP)</span>
+
+## <span style="color:yellow; font-weight:400;">Class and Constructor</span>
+
+A `class` in terms of OOP is a blueprints for creating objects.  
+A   `Class` is like a blurprints for creating similar things
+
+- In TypeScript, there is a convention to use   `PascalCase`(also known as UpperCamelCase) for `class names.`  
+
+
+
+Lets suppose we are taking the survay of the University students. Consider `Person as a class` Person is boarder terms,it can be `Teacher`, `Principle`, `Student` 
+
+-> while defining  class, type alias, Interface looks similar but class has many usecases
+
+```
+class Persons {
+    name: string;     // these are instance properties
+    age: number;
+    hobbies: string[];
+
+    constructor(names:string, age:number, hobbies:string[]){
+        this.name = names;
+        this.age = age;
+        this.hobbies = hobbies
+    }
+}
+```
+*string []  -> array of string*
+
+
+`Instance of a Class` and `Constructor`
+- *Now with the help of classes we can create multiple instances.*
+- *When you `create` a `instance of a class`, it `automatically calls a constructor`.*
+- The `this` keyword in a constructor inside a class refers to the instacne od the object being created. it's used to access and assign values to the instance properties
+
+```
+const person1: Persons = new Persons("Hari", 20, ["reading", "paintings"])
+const person2: Persons = new Persons("Shyam", 30, ["Travelling", "Reading"])
+
+console.log(person2)
+```
+
+## <span style="color:yellow; font-weight:400;">Inheritance and Super Key</span>
+
+-> `Inheritance` is a mechanism in which one class acquires the property of another class. For example, a child inherits the traits of his/her parents
+
+
+-> Lets Create a Student class that Inherits above Person class Charactertics.  
+-> We use `extends` keyword for inheritance
+```
+class Student extends Persons {
+
+ }
+ 
+
+
+ const students1 = new Student("Ramesh", 13, ["Watching Cartoon", "Dancing"])
+ console.log(students1.name)   // o/p:  Ramesh
+```
+
+In above code, we are able to access person instance properties and output it due to inheritance.
+
+- But while adding a new instance properties in the new class Students, There is a rule that all the `constructor func parameters of Parent class` should be mentioned in `new class constructor func` .
+- Not only that we will use  super() keyword to avoid using the this.name, this.age, again of parent class in a new class
+- In TypeScript, the `super keyword` is used in the context of class inheritance. It allows a `subclass`(also known as a `derived class`) to call methods or access properties of its `superclass`(also known as `base class`)
+- This is particularly useful when you want to extend the behaviour of a parent class while still leveraging its existings functionality
+- super keyword position should also be on top than other properties like this.grade
+ lets see:
+
+```
+
+class Student extends Persons {
+    grade: number;
+
+    constructor(names:string, age:number, hobbies:string[], grade:number){
+        super(name,age,hobbies);  
+        this.grade = grade
+    }
+
+
+    introduce(){
+
+        return `Hi I'm ${this.name} and I'm ${this.age} years old. I am in grade ${this.grade}. I love ${this.hobbies.join(",")}`
+    }
+
+ }
+ 
+
+ 
+ const students1 = new Student("Ramesh", 13, ["Watching Cartoon", "Dancing"],  10)
+ console.log(students1.name)   // o/p:  Ramesh
+
+```
