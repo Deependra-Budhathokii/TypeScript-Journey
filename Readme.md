@@ -1,4 +1,4 @@
-# TypeScript(ts)
+s# TypeScript(ts)
 Typescript is a `superset of javascript` that adds static typing and other features to enhance js development.
 
 Js + more features = Typescript
@@ -880,4 +880,121 @@ console.log(circle.calculateArea())
 circle.displayArea();
 
 ```
+
+## <span style="color:yellow; font-weight:400;">Interface Vs Type</span>
+1.
+- Use `Custom types` when you need unions, intersections, or mapped types .
+- `Use interfaces` when defining `object` shapes or `classes` that adhere to a constract
+
+2.
+- Interfaces can `extends`(inherit) other interfaces to inherit their members
+- Custom types can be use unions and intersections for more complex type compositions.s
+
+
+```
+
+interface Stud {
+    name:string;
+    age: number;
+}
+
+interface StudAddr{
+    city: string;
+    Pardesh: string;
+}
+
+
+
+
+
+interface Data extends stud, studAddr{}       
+
+
+
+
+const Biodata: Data = {
+    name: "Hari",
+    age: 20,
+    city: "Birgunj",
+    pardesh : "Bagmati"
+    
+};
+
+console.log(Biodata)
+
+
+IN ABOVE, we inherits two interfaces in interface Data, 
+The curly at the end represent the curly braces of interface 
+
+```
+
+
+Now The above is for `interface with object` now for using `interface in classes` , we use  `implements` in place of    `colon` in class.
+Lets see
+
+`Lets refer Biodata as class `
+
+```
+
+......interface part same as above
+
+
+class Biodata implements Data {
+
+    constructor (public name:string, public age: number, public city:string, public pardesh: string  )
+}
+
+
+<!-- Instantiating the class that means creating objecs -->
+
+const Person1 = new Biodata("Hari", 22, "Birgunj", "Bagmati")
+
+// Here now person1 is object with a properties name, age, city, pardesh and we know how to access value from object
+
+```
+
+
+`In type`
+
+```
+type Stud = {
+    name:string;
+    age: number;
+}
+
+type StudAddr = {
+    city: string;
+    Pardesh: string;
+}
+
+
+ type Data = Stud & stuAddr     <!--& is intersection-->
+
+// or can be
+
+ type Data = Stud | stuAddr     <!-- | is union-->
+
+
+ const  Biodata: Data = {
+    .....rest as 
+ }
+
+```
+
+## <span style="color:yellow; font-weight:400;">Type Safety with Type of Guards</span>
+
+We have skip this for now
+
+
+<br>
+
+## <span style="color:91F14F; font-weight:400;">Should I use Functions or Classes in TypeScript for Mern and Front-End Projects</span>
+
+<span style="color:Green; font-weight:600; font-size:1.2rem">Functional Components Vs Class Components</span>
+
+
+<span style="color:Green; font-weight:600; font-size:1.2rem"> Advise: If you are working on `MERN`, `NEXTJS`, `React` , most will advise you to work on `Functional components` As `We can work Ignoring the concepts of OOPS` But Knowing concepts like `Interface vs type`  etc is imp, although very depth is not needed for now. </span>
+
+
+
 
