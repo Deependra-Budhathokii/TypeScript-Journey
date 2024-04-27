@@ -569,7 +569,7 @@ console.log(greet.age)
 ```
 
 
-## <span style="color:yellow;">Typescript Compiler and Project Configuration</span>
+## <span style="color:#91F14F;">Typescript Compiler and Project Configuration</span>
 
 - To automate our compiler and run of js file seperattively, we need to configure
 
@@ -716,3 +716,168 @@ class Student extends Persons {
  console.log(students1.name)   // o/p:  Ramesh
 
 ```
+
+## <span style="color:yellow; font-weight:400;">Public, Protected and Private: Access Modifiers in OOP</span>
+
+- We have 3 general access modifiers i.e are Public, protected and Private.
+- We can set access contraints on `parent class` `child class` `Outside class`
+- What is `Outside class`  -  Anything outside the class scope i.e In 
+
+```
+class Person {}   
+
+// anything outside the {} is outside of class and withing the curly braces is inside of the class
+```
+
+![access modifiers](/Images/access-modifiers.png)
+
+- By default , our classes access is `Public`
+
+```
+class Persons{
+    public name:string;
+    protected age:number;   // Here age we cannot use `Outside Class`
+    private hobbies:string[]   // Here is hobbies is private thus it can be used only in parent class
+}
+```
+
+## <span style="color:#91F14F;">ShortHand Properties</span>
+
+We can use Shorthand properties in class to eliminate lengthy code. For using Shorthand property, we use `access modifiers`
+
+- Just addtionally mentioning `access Modifiers` , we can use `Shorthand Property for class`
+
+- In case of inheritance  i.e in subclass/baseclass, `super keyword` can be put as it is.
+
+
+
+```
+// ----------------------------
+// AFTER SHORTHAND PROPERTY
+// ----------------------------
+
+class Personsss {
+    
+    constructor(public names:string, public age:number, protected hobbies:string[]){
+    }
+}
+
+
+const personRam = new Personsss("Ram", 20, ["Playing, Singing"])
+console.log(personRam.names)
+```
+
+
+## <span style="color:#91F14F;">Getter and Setter in TS</span>
+
+In `TypeScript Classes`, you can use `getter` and `setter` methods to control the access and modifications of class Properties.
+
+ `Getter methods` allow you  to `retrive the value of a property`,
+ 
+  while  `setter methods` allow you to `set the value of a property with additional logic or validation`
+
+-  The `get method` doesn't take any parameters, and the `set method` takes only `one parameter`
+-  it is used for kind of validation and addding extra security
+- Suppose we create a class for survey of student data, then student enterned the age of 512 years which we already know practically valid so to prevent such scenario ,we use these methods 
+
+
+## <span style="color:yellow; font-weight:400;">Static Properties and Methods in Typescript</span>
+
+- In TS, static methods and properties belong to the class itself rather than to instance of the class. 
+- By making methods and properties `static`, we can access them directly from the class `without needing to create an instance of the class.` 
+- This is useful for utility func or properties that don't rely on instance -specific data
+
+
+```
+Major Purpose: Through static, we can access class props without needing to create a instance of the class
+```
+
+Example: Math operations Utility-  *Creating a utility class to perform various mathematical operations*
+
+
+```
+class MathOperation {
+    public static PI:number = Math.PI
+}
+
+console.log(MathOperation.PI)   // O/P:  3.14
+```
+
+
+
+
+
+```
+class MathOperation {
+    public static PI:number = Math.PI //properties
+    public static add(num1:number,num2:number){
+        return num1+num2
+    }
+}
+
+console.log(MathOperation.PI)  // 3.14
+console.log(MathOperation.add(2,4))   // O/p: 6
+```
+
+In above we are able to access like  we access using built-in methods i.e  classname.methods/func.
+
+
+## <span style="color:yellow; font-weight:400;">Abstract Classes in TypeScript</span>
+#### IMP Topic ------
+
+Abstract classes provides a way to define a `common` properties and methods  that multiple derived classes can share.
+- This promotes `reuse` and helps establish a `common interface` for related classes.
+- `Abstract classes cannot be instantiated`
+  -  we do not do anything we abstract class, we just get data from it for derived classes. That why abstract class are not instantiated.
+  - However we can instantiate the child classes that `inherits/extends` `abstract class`
+- Abstract classes focus on class inheritance and sharing common functionality.
+
+
+Example `Shape Hierarchy`. *Suppose you are building a graphics application, and you want to create a hierarchy of different shapes. You can use an abstract base class shape to define a common properties and methods that all shape shares*
+
+// We have shapes like circle, rectangle, square etc. Lets say we require `calculate area` and `display area` for all these shape which is a `COMMON` NEED which we mention these `abstract class`
+
+```
+syntax: 
+
+
+abstract class Shape{       // Shape is class name
+
+
+    constructor(Protected color:string){}
+
+    abstract calculateArea(): number  // normal func
+    abstract displayArea: () =>void   // fat arrow func
+   
+}   
+```
+
+The above is `abstract class` that contains `common Properties` and `Method`(func in ts)`. Now we can use that abstract class in subclass through inhrtiance/extends
+
+Lets create a class `Circle` that inherits abstract class properties and methods
+
+
+```
+class Circle extends Shape{
+
+    constructor(protected color:string, public radius:number){
+        super(color);
+    }
+
+    calculateArea(){
+        return Math.PI * this.radius * this.radius
+    }
+
+    displayArea = ():void =>{
+        console.log(`This is a ${this.color} circle with radius ${this.radius} `)
+    }
+}
+
+
+const circle = new Circle("red", 5);
+
+console.log(circle.calculateArea())
+circle.displayArea();
+
+```
+
